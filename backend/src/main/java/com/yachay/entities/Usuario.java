@@ -1,0 +1,74 @@
+package com.yachay.entities;
+
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(
+        name="usuarios"
+)
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+
+public class Usuario {
+    @Id
+    @SequenceGenerator(
+            name="usuario_sequence",
+            sequenceName = "usuario_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "usuario_sequence"
+    )
+    @Column(
+            name="id",
+            updatable = false
+    )
+    private Long id;
+
+    @Column(
+            name="nombre",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
+    private String nombre;
+    @Column(
+            name="fecha_de_nacimiento",
+            nullable = false,
+            columnDefinition = "TIMESTAMP WITHOUT TIME ZONE"
+    )
+    private LocalDateTime fecha_de_nacimiento;
+    @Column(
+            name="rol",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
+    private String rol;
+    @Column(
+            name="correo",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
+    private Long correo;
+    @Column(
+            name="universidad",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
+    private Long universidad;
+    @Column(
+            name="genero",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
+    private String genero;
+}
+
