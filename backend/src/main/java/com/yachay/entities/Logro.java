@@ -1,25 +1,23 @@
 package com.yachay.entities;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(
-        name="usuarios"
+        name="logro"
 )
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Usuario {
+public class Logro {
     @Id
     @SequenceGenerator(
             name="usuario_sequence",
@@ -42,42 +40,19 @@ public class Usuario {
             columnDefinition = "TEXT"
     )
     private String nombre;
+
     @Column(
-            name="fecha_de_nacimiento",
-            nullable = false,
-            columnDefinition = "TIMESTAMP WITHOUT TIME ZONE"
+            name="experiencia",
+            nullable = false
     )
-    private LocalDateTime fecha_de_nacimiento;
-    @Column(
-            name="rol",
-            nullable = false,
-            columnDefinition = "TEXT"
-    )
-    private String rol;
-    @Column(
-            name="correo",
-            nullable = false,
-            columnDefinition = "TEXT"
-    )
-    private Long correo;
-    @Column(
-            name="universidad",
-            nullable = false,
-            columnDefinition = "TEXT"
-    )
-    private Long universidad;
-    @Column(
-            name="genero",
-            nullable = false,
-            columnDefinition = "TEXT"
-    )
-    private String genero;
+    private Integer experiencia;
 
     @OneToMany(
-            mappedBy = "usuario",
+            mappedBy = "logro",
             cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
             fetch = FetchType.LAZY
     )
     private List<Logro_Usuario> reservations=new ArrayList<>();
-}
 
+
+}
