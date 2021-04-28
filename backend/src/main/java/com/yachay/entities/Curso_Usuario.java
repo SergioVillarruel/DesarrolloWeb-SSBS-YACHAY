@@ -9,14 +9,15 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(
-        name="logro_usuario"
+        name="curso_usuario"
 )
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Logro_Usuario {
+
+public class Curso_Usuario {
     @Id
     @SequenceGenerator(
             name="logro_usuario_sequence",
@@ -34,11 +35,10 @@ public class Logro_Usuario {
     private Long id;
 
     @Column(
-            name="fecha_de_logro",
-            nullable = false,
-            columnDefinition = "TIMESTAMP WITHOUT TIME ZONE"
+            name="experiencia",
+            nullable = false
     )
-    private LocalDateTime fecha_de_logro;
+    private Integer experiencia;
 
     @ManyToOne
     @JoinColumn(
@@ -53,13 +53,12 @@ public class Logro_Usuario {
 
     @ManyToOne
     @JoinColumn(
-            name = "logro_id",
+            name = "curso_id",
             nullable=false,
             referencedColumnName = "id",
             foreignKey = @ForeignKey(
-                    name = "logro_usuario_fk"
+                    name = "Curso_usuario_fk"
             )
     )
-    private Logro logro;
-
+    private Curso curso;
 }
