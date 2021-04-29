@@ -46,7 +46,7 @@ public class Curso_Usuario {
             nullable=false,
             referencedColumnName = "id",
             foreignKey = @ForeignKey(
-                    name = "usuario_logro_fk"
+                    name = "usuario_curso_fk"
             )
     )
     private Usuario usuario;

@@ -38,7 +38,7 @@ public class Meeting_App_Usuario {
             nullable=false,
             referencedColumnName = "id",
             foreignKey = @ForeignKey(
-                    name = "usuario_logro_fk"
+                    name = "usuario_meeting_app_fk"
             )
     )
     private Usuario usuario;
@@ -49,7 +49,7 @@ public class Meeting_App_Usuario {
             nullable=false,
             referencedColumnName = "id",
             foreignKey = @ForeignKey(
-                    name = "usuario_logro_fk"
+                    name = "meeting_app_usuario_fk"
             )
     )
     private Meeting_App meeting_app;
