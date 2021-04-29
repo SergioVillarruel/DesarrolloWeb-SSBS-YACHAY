@@ -59,13 +59,20 @@ public class Usuario {
             nullable = false,
             columnDefinition = "TEXT"
     )
-    private Long correo;
+    private String correo;
+    @Column(
+            name="contraseña",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
+    private String contraseña;
+
     @Column(
             name="universidad",
             nullable = false,
             columnDefinition = "TEXT"
     )
-    private Long universidad;
+    private String universidad;
     @Column(
             name="genero",
             nullable = false,
