@@ -10,24 +10,23 @@ import java.util.List;
 
 @Entity
 @Table(
-        name="curso"
+        name="meeting_app"
 )
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 
-
-public class Curso {
+public class Meeting_App {
     @Id
     @SequenceGenerator(
-            name="curso_sequence",
-            sequenceName = "curso_sequence",
+            name="usuario_sequence",
+            sequenceName = "usuario_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "curso_sequence"
+            generator = "usuario_sequence"
     )
     @Column(
             name="id",
@@ -43,23 +42,17 @@ public class Curso {
     private String nombre;
 
     @Column(
-            name="universidad",
+            name="url",
             nullable = false,
             columnDefinition = "TEXT"
     )
-    private String universidad;
-
-    @Column(
-            name="ciclo",
-            nullable = false
-    )
-    private Integer ciclo;
+    private String url;
 
     @OneToMany(
-            mappedBy = "curso",
+            mappedBy = "meeting_app",
             cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
             fetch = FetchType.LAZY
     )
-    private List<Curso_Usuario> usuario=new ArrayList<>();
+    private List<Meeting_App_Usuario> usuario=new ArrayList<>();
 
 }

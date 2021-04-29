@@ -78,6 +78,20 @@ public class Usuario {
             cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
             fetch = FetchType.LAZY
     )
-    private List<Logro_Usuario> reservations=new ArrayList<>();
+    private List<Logro_Usuario> logro=new ArrayList<>();
+
+    @OneToMany(
+            mappedBy = "usuario",
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            fetch = FetchType.LAZY
+    )
+    private List<Curso_Usuario> curso=new ArrayList<>();
+
+    @OneToMany(
+            mappedBy = "usuario",
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            fetch = FetchType.LAZY
+    )
+    private List<Meeting_App_Usuario> meeting_app=new ArrayList<>();
 }
 

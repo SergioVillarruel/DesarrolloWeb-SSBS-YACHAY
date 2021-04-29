@@ -52,7 +52,7 @@ public class Logro {
             cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
             fetch = FetchType.LAZY
     )
-    private List<Logro_Usuario> reservations=new ArrayList<>();
+    private List<Logro_Usuario> usuario=new ArrayList<>();
 
 
 }
