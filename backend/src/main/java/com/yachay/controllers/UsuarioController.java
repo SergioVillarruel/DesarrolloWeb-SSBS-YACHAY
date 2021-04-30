@@ -1,6 +1,7 @@
 package com.yachay.controllers;
 
 import com.yachay.dtos.CreateUsuarioDto;
+import com.yachay.dtos.LoginUsuarioDto;
 import com.yachay.dtos.UsuarioDto;
 import com.yachay.responses.ApiResponse;
 import com.yachay.services.UsuarioService;
@@ -27,5 +28,12 @@ public class UsuarioController {
     public ApiResponse<UsuarioDto> createUsuario(@RequestBody CreateUsuarioDto createUsuarioDto) {
         return new ApiResponse<>("Success", String.valueOf(HttpStatus.OK), "OK",
                 usuarioService.registerUsuario(createUsuarioDto));
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping("/usuarios/login")
+    public ApiResponse<UsuarioDto> loginUsuario(@RequestBody LoginUsuarioDto loginUsuarioDto) {
+        return new ApiResponse<>("Success", String.valueOf(HttpStatus.OK), "OK",
+                usuarioService.loginUsuario(loginUsuarioDto));
     }
 }

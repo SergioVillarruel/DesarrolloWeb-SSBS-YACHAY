@@ -1,6 +1,7 @@
 package com.yachay.services.impl;
 
 import com.yachay.dtos.CreateUsuarioDto;
+import com.yachay.dtos.LoginUsuarioDto;
 import com.yachay.dtos.UsuarioDto;
 import com.yachay.entities.Usuario;
 import com.yachay.repositories.UsuarioRepository;
@@ -22,7 +23,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public UsuarioDto findUsuarioById(Long usuarioId) {
-        return modelMapper.map(getUsuarioEntity(usuarioId), UsuarioDto.class);
+        return modelMapper.map(getUsuarioEntityById(usuarioId), UsuarioDto.class);
     }
 
     @Transactional
@@ -43,14 +44,23 @@ public class UsuarioServiceImpl implements UsuarioService {
             throw new Error("No se pudo crear usuario");// Todo handle error better
         }
 
-        return modelMapper.map(getUsuarioEntity(new_usuario.getId()), UsuarioDto.class);
+        return modelMapper.map(getUsuarioEntityById(new_usuario.getId()), UsuarioDto.class);
+    }
+
+    @Override
+    public UsuarioDto loginUsuario(LoginUsuarioDto loginUsuarioDto) {
+        return modelMapper.map(getUsuarioEntity(loginUsuarioDto.getCorreo(), loginUsuarioDto.getContraseña()), UsuarioDto.class);
     }
 
     private LocalDate toLocalDate(String strFecha) {
        return LocalDate.parse(strFecha);
     }
 
-    private Usuario getUsuarioEntity(Long usuarioId) {
+    private Usuario getUsuarioEntityById(Long usuarioId) {
         return usuarioRepository.findById(usuarioId).orElse(null);// Todo Add exception
+    }
+
+    private Usuario getUsuarioEntity(String correo, String contraseña) {
+        return usuarioRepository.findByCorreoAndContraseña(correo, contraseña).orElse(null);// Todo Add exception
     }
 }
