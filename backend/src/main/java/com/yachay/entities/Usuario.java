@@ -101,5 +101,19 @@ public class Usuario {
             fetch = FetchType.LAZY
     )
     private List<Meeting_App_Usuario> meeting_app=new ArrayList<>();
+
+    @OneToMany(
+            mappedBy = "alumno",
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            fetch = FetchType.LAZY
+    )
+    private List<Reserva> alumno=new ArrayList<>();
+
+    @OneToMany(
+            mappedBy = "tutor",
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            fetch = FetchType.LAZY
+    )
+    private List<Reserva> tutor=new ArrayList<>();
 }
 
