@@ -38,12 +38,12 @@ public class UsuarioController {
                 usuarioService.loginUsuario(loginUsuarioDto));
     }
 
-    @ResponseStatus(HttpStatus.OK)
-    @PostMapping("/usuarios/recoverContrasenia")
-    public ApiResponse<UsuarioDto> findRegistro(@PathVariable Long usuarioID){
-        return new ApiResponse<>("Success", String.valueOf(HttpStatus.OK), "OK",
-                usuarioService.findContraseñabyEmail(usuarioID));
-    }
+   // @ResponseStatus(HttpStatus.OK)
+    //@PostMapping("/usuarios/recoverContrasenia")
+    //public ApiResponse<UsuarioDto> findRegistro(@PathVariable Long usuarioID){
+    //    return new ApiResponse<>("Success", String.valueOf(HttpStatus.OK), "OK",
+    //            usuarioService.findContraseñabyEmail(usuarioID));
+    //}
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/usaurios/{usuarioCurso}")
@@ -57,5 +57,12 @@ public class UsuarioController {
     public ApiResponse<UsuarioDto> editUsuario(@PathVariable UsuarioDto user,@RequestBody CreateUsuarioDto new_data){
         return new ApiResponse<UsuarioDto>("Success", String.valueOf(HttpStatus.OK), "OK",
                 usuarioService.editUsuario(user,new_data));
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping("/usaurios/{rol}")
+    public ApiResponse<UsuarioDto> getUsuarioById(@PathVariable String rol) {
+        return new ApiResponse<>("Success", String.valueOf(HttpStatus.OK), "OK",
+                usuarioService.findAllUsuariosByRol(rol));
     }
 }

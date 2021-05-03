@@ -27,10 +27,10 @@ public class UsuarioServiceImpl implements UsuarioService {
         return modelMapper.map(getUsuarioEntityById(usuarioId), UsuarioDto.class);
     }
 
-    @Override
-    public UsuarioDto findContraseñabyEmail(Long usuarioId){
-        return modelMapper.map(getContraseñaByCorreo(usuarioId), UsuarioDto.class);
-    }
+   // @Override
+    //public UsuarioDto findContraseñabyEmail(Long usuarioId){
+    //    return modelMapper.map(getContraseñaByCorreo(usuarioId), UsuarioDto.class);
+    //}
 
     @Override
     public UsuarioDto findAllUsuarioByCurso(String Nombre) {
@@ -90,8 +90,13 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
 
-    private Usuario getContraseñaByCorreo(Long usuarioID){
-        return  usuarioRepository.findPasswordbyEmail(usuarioID).orElse(null);
+    //private Usuario getContraseñaByCorreo(Long usuarioID){
+   //     return  usuarioRepository.findPasswordbyEmail(usuarioID).orElse(null);
+    //}
+
+    @Override
+    public UsuarioDto findAllUsuariosByRol(String Rol) {
+        return modelMapper.map(usuarioRepository.findAllByRol(Rol),UsuarioDto.class);
     }
 
 }
