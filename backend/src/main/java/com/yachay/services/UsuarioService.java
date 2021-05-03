@@ -10,7 +10,7 @@ public interface UsuarioService {
     UsuarioDto findUsuarioById(Long usuarioId);
     UsuarioDto registerUsuario(CreateUsuarioDto createUsuarioDto);
     UsuarioDto loginUsuario(LoginUsuarioDto loginUsuarioDto);
-    UsuarioDto findContrasenia(LoginUsuarioDto LoginUsuarioDto);
+    UsuarioDto findContraseñabyEmail(Long usuarioId);
     UsuarioDto findAllUsuarioByCurso(String Nombre);
     UsuarioDto editUsuario(UsuarioDto usuario, CreateUsuarioDto new_datos);
 }

@@ -40,9 +40,9 @@ public class UsuarioController {
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/usuarios/recoverContrasenia")
-    public ApiResponse<UsuarioDto> findRegistro(@PathVariable LoginUsuarioDto LoginUsuarioDto){
+    public ApiResponse<UsuarioDto> findRegistro(@PathVariable Long usuarioID){
         return new ApiResponse<>("Success", String.valueOf(HttpStatus.OK), "OK",
-                usuarioService.findContrasenia(LoginUsuarioDto));
+                usuarioService.findContraseñabyEmail(usuarioID));
     }
 
     @ResponseStatus(HttpStatus.OK)

@@ -10,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.plaf.synth.ColorType;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 
@@ -27,8 +28,8 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public UsuarioDto findContrasenia(LoginUsuarioDto LoginUsuarioDto){
-        return modelMapper.map(getContraseniaByCorreo(LoginUsuarioDto.getContraseña()), UsuarioDto.class);
+    public UsuarioDto findContraseñabyEmail(Long usuarioId){
+        return modelMapper.map(getContraseñaByCorreo(usuarioId), UsuarioDto.class);
     }
 
     @Override
@@ -74,6 +75,8 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
 
+
+
     private LocalDate toLocalDate(String strFecha) {
        return LocalDate.parse(strFecha);
     }
@@ -87,8 +90,8 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
 
-    private Usuario getContraseniaByCorreo(String contraseña){
-        return  usuarioRepository.findUserbyContrasenia(contraseña).orElse(null);
+    private Usuario getContraseñaByCorreo(Long usuarioID){
+        return  usuarioRepository.findPasswordbyEmail(usuarioID).orElse(null);
     }
 
 }
