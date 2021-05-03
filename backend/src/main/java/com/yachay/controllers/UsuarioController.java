@@ -3,6 +3,7 @@ package com.yachay.controllers;
 import com.yachay.dtos.CreateUsuarioDto;
 import com.yachay.dtos.LoginUsuarioDto;
 import com.yachay.dtos.UsuarioDto;
+import com.yachay.entities.Usuario;
 import com.yachay.responses.ApiResponse;
 import com.yachay.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,10 +39,23 @@ public class UsuarioController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PostMapping("/usaurios/recoverContrania")
+    @PostMapping("/usuarios/recoverContrasenia")
     public ApiResponse<UsuarioDto> findRegistro(@PathVariable LoginUsuarioDto LoginUsuarioDto){
         return new ApiResponse<>("Success", String.valueOf(HttpStatus.OK), "OK",
                 usuarioService.findContrasenia(LoginUsuarioDto));
     }
 
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/usaurios/{usuarioCurso}")
+    public ApiResponse<UsuarioDto> findAllByCurso(@PathVariable String usuarioCurso){
+        return new ApiResponse<>("Success", String.valueOf(HttpStatus.OK), "OK",
+                usuarioService.findAllUsuarioByCurso(usuarioCurso));
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping("/usaurios/{usuarioId}")
+    public ApiResponse<UsuarioDto> editUsuario(@PathVariable UsuarioDto user,@RequestBody CreateUsuarioDto new_data){
+        return new ApiResponse<UsuarioDto>("Success", String.valueOf(HttpStatus.OK), "OK",
+                usuarioService.editUsuario(user,new_data));
+    }
 }

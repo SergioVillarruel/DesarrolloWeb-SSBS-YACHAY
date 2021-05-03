@@ -3,6 +3,7 @@ package com.yachay.services;
 import com.yachay.dtos.CreateUsuarioDto;
 import com.yachay.dtos.LoginUsuarioDto;
 import com.yachay.dtos.UsuarioDto;
+import com.yachay.entities.Usuario;
 
 public interface UsuarioService {
     //Todo add exceptions
@@ -10,5 +11,6 @@ public interface UsuarioService {
     UsuarioDto registerUsuario(CreateUsuarioDto createUsuarioDto);
     UsuarioDto loginUsuario(LoginUsuarioDto loginUsuarioDto);
     UsuarioDto findContrasenia(LoginUsuarioDto LoginUsuarioDto);
-
+    UsuarioDto findAllUsuarioByCurso(String Nombre);
+    UsuarioDto editUsuario(UsuarioDto usuario, CreateUsuarioDto new_datos);
 }

@@ -31,6 +31,22 @@ public class UsuarioServiceImpl implements UsuarioService {
         return modelMapper.map(getContraseniaByCorreo(LoginUsuarioDto.getContraseña()), UsuarioDto.class);
     }
 
+    @Override
+    public UsuarioDto findAllUsuarioByCurso(String Nombre) {
+        return modelMapper.map(usuarioRepository.findAllByCurso(Nombre),UsuarioDto.class);
+    }
+
+    @Override
+    public UsuarioDto editUsuario(UsuarioDto usuario, CreateUsuarioDto new_datos){
+        usuarioRepository.getOne(usuario.getId()).setContraseña(new_datos.getContraseña());
+        usuarioRepository.getOne(usuario.getId()).setCorreo(new_datos.getCorreo());
+        usuarioRepository.getOne(usuario.getId()).setGenero(new_datos.getGenero());
+        usuarioRepository.getOne(usuario.getId()).setNombre(new_datos.getNombre());
+        usuarioRepository.getOne(usuario.getId()).setFecha_de_nacimiento(toLocalDate(new_datos.getFecha_de_nacimiento()));
+        usuarioRepository.getOne(usuario.getId()).setRol(new_datos.getRol());
+        return modelMapper.map(usuarioRepository.getOne(usuario.getId()),UsuarioDto.class);
+    }
+
     @Transactional
     @Override
     public UsuarioDto registerUsuario(CreateUsuarioDto createUsuarioDto) {
@@ -74,4 +90,5 @@ public class UsuarioServiceImpl implements UsuarioService {
     private Usuario getContraseniaByCorreo(String contraseña){
         return  usuarioRepository.findUserbyContrasenia(contraseña).orElse(null);
     }
+
 }
