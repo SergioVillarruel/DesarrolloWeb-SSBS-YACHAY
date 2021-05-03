@@ -27,8 +27,8 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public UsuarioDto findContrasenia(Long usuarioId){
-        return modelMapper.map(getContraseniaByCorreo(usuarioId), UsuarioDto.class);
+    public UsuarioDto findContrasenia(LoginUsuarioDto LoginUsuarioDto){
+        return modelMapper.map(getContraseniaByCorreo(LoginUsuarioDto.getContraseña()), UsuarioDto.class);
     }
 
     @Transactional
@@ -71,7 +71,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
 
-    private Usuario getContraseniaByCorreo(Long usuarioId){
-        return  usuarioRepository.findUserbyContrasenia(usuarioId).orElse(null);
+    private Usuario getContraseniaByCorreo(String contraseña){
+        return  usuarioRepository.findUserbyContrasenia(contraseña).orElse(null);
     }
 }
