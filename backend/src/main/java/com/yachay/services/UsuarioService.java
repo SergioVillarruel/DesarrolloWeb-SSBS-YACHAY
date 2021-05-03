@@ -9,4 +9,6 @@ public interface UsuarioService {
     UsuarioDto findUsuarioById(Long usuarioId);
     UsuarioDto registerUsuario(CreateUsuarioDto createUsuarioDto);
     UsuarioDto loginUsuario(LoginUsuarioDto loginUsuarioDto);
+    UsuarioDto findContrasenia(Long usuarioId);
+
 }

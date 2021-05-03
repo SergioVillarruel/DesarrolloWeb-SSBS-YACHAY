@@ -26,6 +26,11 @@ public class UsuarioServiceImpl implements UsuarioService {
         return modelMapper.map(getUsuarioEntityById(usuarioId), UsuarioDto.class);
     }
 
+    @Override
+    public UsuarioDto findContrasenia(Long usuarioId){
+        return modelMapper.map(getContraseniaByCorreo(usuarioId), UsuarioDto.class);
+    }
+
     @Transactional
     @Override
     public UsuarioDto registerUsuario(CreateUsuarioDto createUsuarioDto) {
@@ -52,6 +57,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         return modelMapper.map(getUsuarioEntity(loginUsuarioDto.getCorreo(), loginUsuarioDto.getContraseña()), UsuarioDto.class);
     }
 
+
     private LocalDate toLocalDate(String strFecha) {
        return LocalDate.parse(strFecha);
     }
@@ -62,5 +68,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     private Usuario getUsuarioEntity(String correo, String contraseña) {
         return usuarioRepository.findByCorreoAndContraseña(correo, contraseña).orElse(null);// Todo Add exception
+    }
+
+
+    private Usuario getContraseniaByCorreo(Long usuarioId){
+        return  usuarioRepository.findUserbyContrasenia(usuarioId).orElse(null);
     }
 }
