@@ -39,14 +39,16 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public UsuarioDto editUsuario(Long usuarioId, CreateUsuarioDto new_datos){
-        usuarioRepository.getOne(getUsuarioEntityById(usuarioId).getId()).setContraseña(new_datos.getContraseña());
-        usuarioRepository.getOne(getUsuarioEntityById(usuarioId).getId()).setCorreo(new_datos.getCorreo());
-        usuarioRepository.getOne(getUsuarioEntityById(usuarioId).getId()).setGenero(new_datos.getGenero());
-        usuarioRepository.getOne(getUsuarioEntityById(usuarioId).getId()).setNombre(new_datos.getNombre());
-        usuarioRepository.getOne(getUsuarioEntityById(usuarioId).getId()).setFecha_de_nacimiento(toLocalDate(new_datos.getFecha_de_nacimiento()));
-        usuarioRepository.getOne(getUsuarioEntityById(usuarioId).getId()).setRol(new_datos.getRol());
+        Usuario perfil = getUsuarioEntityById(usuarioId);
 
-        return modelMapper.map(usuarioRepository.getOne(getUsuarioEntityById(usuarioId).getId()),UsuarioDto.class);
+        perfil.setContraseña(new_datos.getContraseña());
+        perfil.setCorreo(new_datos.getCorreo());
+        perfil.setGenero(new_datos.getGenero());
+        perfil.setNombre(new_datos.getNombre());
+        perfil.setFecha_de_nacimiento(toLocalDate(new_datos.getFecha_de_nacimiento()));
+        perfil.setRol(new_datos.getRol());
+
+        return modelMapper.map(getUsuarioEntityById(perfil.getId()),UsuarioDto.class);
     }
 
     @Transactional
