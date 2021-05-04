@@ -38,12 +38,12 @@ public class UsuarioController {
                 usuarioService.loginUsuario(loginUsuarioDto));
     }
 
-   // @ResponseStatus(HttpStatus.OK)
-    //@PostMapping("/usuarios/recoverContrasenia")
-    //public ApiResponse<UsuarioDto> findRegistro(@PathVariable Long usuarioID){
-    //    return new ApiResponse<>("Success", String.valueOf(HttpStatus.OK), "OK",
-    //            usuarioService.findContraseñabyEmail(usuarioID));
-    //}
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping("/usuarios/recoverContrasenia")
+    public ApiResponse<UsuarioDto> findRegistro(@PathVariable String correo){
+        return new ApiResponse<>("Success", String.valueOf(HttpStatus.OK), "OK",
+                usuarioService.recuperarContrasenia(correo));
+    }
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/usaurios/{usuarioCurso}")

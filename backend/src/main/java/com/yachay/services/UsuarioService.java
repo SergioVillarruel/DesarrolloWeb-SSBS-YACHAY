@@ -14,4 +14,5 @@ public interface UsuarioService {
     UsuarioDto findAllUsuarioByCurso(String Nombre);
     UsuarioDto editUsuario(UsuarioDto usuario, CreateUsuarioDto new_datos);
     UsuarioDto findAllUsuariosByRol(String Rol);
+    UsuarioDto recuperarContrasenia(String correo);
 }

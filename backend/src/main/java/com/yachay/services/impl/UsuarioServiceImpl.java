@@ -75,8 +75,6 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
 
-
-
     private LocalDate toLocalDate(String strFecha) {
        return LocalDate.parse(strFecha);
     }
@@ -90,9 +88,10 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
 
-    //private Usuario getContraseñaByCorreo(Long usuarioID){
-   //     return  usuarioRepository.findPasswordbyEmail(usuarioID).orElse(null);
-    //}
+    @Override
+    public UsuarioDto recuperarContrasenia(String correo){
+        return modelMapper.map(usuarioRepository.findByCorreo(correo),UsuarioDto.class);
+    }
 
     @Override
     public UsuarioDto findAllUsuariosByRol(String Rol) {

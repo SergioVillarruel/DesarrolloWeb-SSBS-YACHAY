@@ -12,6 +12,7 @@ public class UsuarioDto {
     private Long id;
     private String nombre;
     private String correo;
+    private String contreseña;
     private String rol;
     private String universidad;
     private LocalDate fecha_de_nacimiento;
