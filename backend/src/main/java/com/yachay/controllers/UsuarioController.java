@@ -46,21 +46,21 @@ public class UsuarioController {
     //}
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/usaurios/{usuarioCurso}")
+    @GetMapping("/usuarios/{usuarioCurso}")
     public ApiResponse<UsuarioDto> findAllByCurso(@PathVariable String usuarioCurso){
         return new ApiResponse<>("Success", String.valueOf(HttpStatus.OK), "OK",
                 usuarioService.findAllUsuarioByCurso(usuarioCurso));
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PostMapping("/usaurios/{usuarioId}")
-    public ApiResponse<UsuarioDto> editUsuario(@PathVariable UsuarioDto user,@RequestBody CreateUsuarioDto new_data){
+    @PostMapping("/usuarios/{usuarioId}")
+    public ApiResponse<UsuarioDto> editUsuario(@PathVariable Long usuarioId,@RequestBody CreateUsuarioDto new_data){
         return new ApiResponse<UsuarioDto>("Success", String.valueOf(HttpStatus.OK), "OK",
-                usuarioService.editUsuario(user,new_data));
+                usuarioService.editUsuario(usuarioId,new_data));
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PostMapping("/usaurios/{rol}")
+    @PostMapping("/usuarios/{rol}")
     public ApiResponse<UsuarioDto> getUsuarioById(@PathVariable String rol) {
         return new ApiResponse<>("Success", String.valueOf(HttpStatus.OK), "OK",
                 usuarioService.findAllUsuariosByRol(rol));

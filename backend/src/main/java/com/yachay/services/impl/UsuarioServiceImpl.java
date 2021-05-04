@@ -38,14 +38,15 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public UsuarioDto editUsuario(UsuarioDto usuario, CreateUsuarioDto new_datos){
-        usuarioRepository.getOne(usuario.getId()).setContraseña(new_datos.getContraseña());
-        usuarioRepository.getOne(usuario.getId()).setCorreo(new_datos.getCorreo());
-        usuarioRepository.getOne(usuario.getId()).setGenero(new_datos.getGenero());
-        usuarioRepository.getOne(usuario.getId()).setNombre(new_datos.getNombre());
-        usuarioRepository.getOne(usuario.getId()).setFecha_de_nacimiento(toLocalDate(new_datos.getFecha_de_nacimiento()));
-        usuarioRepository.getOne(usuario.getId()).setRol(new_datos.getRol());
-        return modelMapper.map(usuarioRepository.getOne(usuario.getId()),UsuarioDto.class);
+    public UsuarioDto editUsuario(Long usuarioId, CreateUsuarioDto new_datos){
+        usuarioRepository.getOne(getUsuarioEntityById(usuarioId).getId()).setContraseña(new_datos.getContraseña());
+        usuarioRepository.getOne(getUsuarioEntityById(usuarioId).getId()).setCorreo(new_datos.getCorreo());
+        usuarioRepository.getOne(getUsuarioEntityById(usuarioId).getId()).setGenero(new_datos.getGenero());
+        usuarioRepository.getOne(getUsuarioEntityById(usuarioId).getId()).setNombre(new_datos.getNombre());
+        usuarioRepository.getOne(getUsuarioEntityById(usuarioId).getId()).setFecha_de_nacimiento(toLocalDate(new_datos.getFecha_de_nacimiento()));
+        usuarioRepository.getOne(getUsuarioEntityById(usuarioId).getId()).setRol(new_datos.getRol());
+
+        return modelMapper.map(usuarioRepository.getOne(getUsuarioEntityById(usuarioId).getId()),UsuarioDto.class);
     }
 
     @Transactional
