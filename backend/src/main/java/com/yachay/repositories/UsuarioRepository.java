@@ -12,6 +12,7 @@ import java.util.Optional;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
    //Todo add exception
+   @Override
    Optional<Usuario> findById(Long usuarioId);
    Optional<Usuario> findByCorreoAndContraseña(String correo, String contraseña);
    //Optional<Usuario> findPasswordbyEmail(Long usuarioId);
