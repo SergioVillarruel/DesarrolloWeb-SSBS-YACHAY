@@ -48,6 +48,12 @@ public class UsuarioServiceImpl implements UsuarioService {
         perfil.setFecha_de_nacimiento(toLocalDate(new_datos.getFecha_de_nacimiento()));
         perfil.setRol(new_datos.getRol());
 
+        try {
+            perfil = usuarioRepository.save(perfil);
+        } catch (Exception exception) {
+            throw new Error("No se pudo crear usuario");// Todo handle error better
+        }
+
         return modelMapper.map(getUsuarioEntityById(perfil.getId()),UsuarioDto.class);
     }
 
