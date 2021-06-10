@@ -6,6 +6,7 @@ import com.yachay.dtos.UsuarioDto;
 import com.yachay.entities.Usuario;
 import com.yachay.repositories.UsuarioRepository;
 import com.yachay.services.UsuarioService;
+import com.yachay.jsons.usuarioRest;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Service;
 import javax.swing.plaf.synth.ColorType;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
@@ -103,8 +106,10 @@ public class UsuarioServiceImpl implements UsuarioService {
     //}
 
     @Override
-    public UsuarioDto findAllUsuariosByRol(String Rol) {
-        return modelMapper.map(usuarioRepository.findAllByRol(Rol),UsuarioDto.class);
+    public List<usuarioRest> findAllUsuarioByRol(String Rol) {
+
+        final List<Usuario> usuarioEntity = usuarioRepository.findByRolIs(Rol);
+        return usuarioEntity.stream().map(service -> modelMapper.map(service, usuarioRest.class)).collect(Collectors.toList());
     }
 
 }

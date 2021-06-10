@@ -4,11 +4,15 @@ import com.yachay.dtos.CreateUsuarioDto;
 import com.yachay.dtos.LoginUsuarioDto;
 import com.yachay.dtos.UsuarioDto;
 import com.yachay.entities.Usuario;
+import com.yachay.jsons.usuarioRest;
 import com.yachay.responses.ApiResponse;
 import com.yachay.services.UsuarioService;
+import com.yachay.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "/yachay-api")
@@ -60,9 +64,9 @@ public class UsuarioController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PostMapping("/usuarios/rol/{rol}")
-    public ApiResponse<UsuarioDto> getUsuarioByRol(@PathVariable String rol) {
+    @GetMapping("/usuarios/rol/{usuarioRol}")
+    public ApiResponse<List<usuarioRest>> findAllByRol(@PathVariable String usuarioRol) {
         return new ApiResponse<>("Success", String.valueOf(HttpStatus.OK), "OK",
-                usuarioService.findAllUsuariosByRol(rol));
+                usuarioService.findAllUsuarioByRol(usuarioRol));
     }
 }

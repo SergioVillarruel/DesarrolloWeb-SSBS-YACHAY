@@ -5,6 +5,8 @@ import java.util.List;
 import com.yachay.entities.Curso;
 import com.yachay.entities.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -17,5 +19,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
    Optional<Usuario> findByCorreoAndContraseña(String correo, String contraseña);
    //Optional<Usuario> findPasswordbyEmail(Long usuarioId);
    List<Usuario> findAllByCurso(String var1);
-   List<Usuario> findAllByRol(String rol);
+
+   //@Query("SELECT u FROM Usuario u WHERE u.rol =:Rol")
+   //List<Usuario> findByRol(@Param("Rol") String Rol);
+   List<Usuario> findByRolIs(String Rol);
 }

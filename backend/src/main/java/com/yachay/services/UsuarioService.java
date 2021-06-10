@@ -4,6 +4,9 @@ import com.yachay.dtos.CreateUsuarioDto;
 import com.yachay.dtos.LoginUsuarioDto;
 import com.yachay.dtos.UsuarioDto;
 import com.yachay.entities.Usuario;
+import com.yachay.jsons.usuarioRest;
+
+import java.util.List;
 
 public interface UsuarioService {
     //Todo add exceptions
@@ -13,5 +16,5 @@ public interface UsuarioService {
     //UsuarioDto findContraseñabyEmail(Long usuarioId);
     UsuarioDto findAllUsuarioByCurso(String Nombre);
     UsuarioDto editUsuario(Long usuarioId, CreateUsuarioDto new_datos);
-    UsuarioDto findAllUsuariosByRol(String Rol);
+    public List<usuarioRest> findAllUsuarioByRol(String Rol);
 }
