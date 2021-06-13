@@ -5,7 +5,11 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class usuarioRest {
 
@@ -34,6 +38,9 @@ public class usuarioRest {
     @JsonProperty("genero")
     private String genero;
 
+    @JsonProperty("imagen")
+    private  String imagen;
+
     public Long getId() {
         return id;
     }
@@ -42,61 +49,6 @@ public class usuarioRest {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String name) {
-        this.nombre = name;
-    }
-
-    public LocalDate getFecha_de_nacimiento() {
-        return fecha_de_nacimiento;
-    }
-
-    public void setFecha_de_nacimiento(LocalDate fecha_de_nacimiento) {
-        this.fecha_de_nacimiento = fecha_de_nacimiento;
-    }
-
-    public String getRol() {
-        return rol;
-    }
-
-    public void setRol(String rol) {
-        this.rol = rol;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String getContraseña() {
-        return contraseña;
-    }
-
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
-    }
-
-    public String getUniversidad() {
-        return universidad;
-    }
-
-    public void setUniversidad(String universidad) {
-        this.universidad = universidad;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
 
 
 }

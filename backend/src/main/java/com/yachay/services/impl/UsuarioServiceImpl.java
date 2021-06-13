@@ -82,12 +82,22 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
+    public  UsuarioDto editarImagen(Long usuarioId,String imagen){
+        Usuario perfil = getUsuarioEntityById(usuarioId);
+        perfil.setImagen(imagen);
+        try {
+            perfil = usuarioRepository.save(perfil);
+        } catch (Exception exception) {
+            throw new Error("No se pudo guardar la imagen");// Todo handle error better
+        }
+
+        return modelMapper.map(getUsuarioEntityById(perfil.getId()),UsuarioDto.class);
+    }
+
+    @Override
     public UsuarioDto loginUsuario(LoginUsuarioDto loginUsuarioDto) {
         return modelMapper.map(getUsuarioEntity(loginUsuarioDto.getCorreo(), loginUsuarioDto.getContraseña()), UsuarioDto.class);
     }
-
-
-
 
     private LocalDate toLocalDate(String strFecha) {
        return LocalDate.parse(strFecha);

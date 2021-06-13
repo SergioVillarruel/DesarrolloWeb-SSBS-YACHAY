@@ -69,4 +69,12 @@ public class UsuarioController {
         return new ApiResponse<>("Success", String.valueOf(HttpStatus.OK), "OK",
                 usuarioService.findAllUsuarioByRol(usuarioRol));
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping("/usuarios/editImagen/{usuarioId}")
+    public ApiResponse<UsuarioDto> editarImagen(@PathVariable Long usuarioId,@RequestBody String imagen){
+        return new ApiResponse<UsuarioDto>("Success", String.valueOf(HttpStatus.OK), "OK",
+                usuarioService.editarImagen(usuarioId,imagen));
+    }
+
 }

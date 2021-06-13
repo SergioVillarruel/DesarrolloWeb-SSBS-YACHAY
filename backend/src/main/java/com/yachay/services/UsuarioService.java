@@ -17,4 +17,5 @@ public interface UsuarioService {
     UsuarioDto findAllUsuarioByCurso(String Nombre);
     UsuarioDto editUsuario(Long usuarioId, CreateUsuarioDto new_datos);
     public List<usuarioRest> findAllUsuarioByRol(String Rol);
+    UsuarioDto editarImagen(Long usuarioId,String imagen);
 }
