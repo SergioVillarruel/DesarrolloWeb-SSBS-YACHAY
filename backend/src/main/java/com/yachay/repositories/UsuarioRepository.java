@@ -20,6 +20,9 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
    //Optional<Usuario> findPasswordbyEmail(Long usuarioId);
    List<Usuario> findAllByCurso(String var1);
    List<Usuario> findByRolIs(String Rol);
+   List<Usuario> findByUniversidad(String Universidad);
+   //@Query("select  u.portafolio from Usuario u where u.nombre = ?1")
+   Optional<Usuario> findByNombre(String nombre);
 
 
 }

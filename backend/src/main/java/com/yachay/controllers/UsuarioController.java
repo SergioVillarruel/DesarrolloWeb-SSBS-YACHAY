@@ -77,4 +77,20 @@ public class UsuarioController {
                 usuarioService.editarImagen(usuarioId,imagen));
     }
 
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping("/usuarios/editPortafolio/{usuarioId}")
+    public ApiResponse<UsuarioDto> editarPortafolio(@PathVariable Long usuarioId,@RequestBody String portafolio){
+        return new ApiResponse<UsuarioDto>("Success", String.valueOf(HttpStatus.OK), "OK",
+                usuarioService.editarPortafolio(usuarioId,portafolio));
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/usuarios/universidad/{usuarioUniversidad}")
+    public ApiResponse<List<UsuarioDto>> findByUniversidad(@PathVariable String usuarioUniversidad) {
+        return new ApiResponse<>("Success", String.valueOf(HttpStatus.OK), "OK",
+                usuarioService.findByUniversidad(usuarioUniversidad));
+    }
+
+    
+
 }

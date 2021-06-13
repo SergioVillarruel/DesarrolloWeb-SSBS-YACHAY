@@ -16,4 +16,6 @@ public class UsuarioDto {
     private String universidad;
     private LocalDate fecha_de_nacimiento;
     private String genero;
+    private String imagen;
+    private String portafolio;
 }

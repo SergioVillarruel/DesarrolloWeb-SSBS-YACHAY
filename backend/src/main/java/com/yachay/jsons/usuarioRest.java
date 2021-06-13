@@ -41,13 +41,10 @@ public class usuarioRest {
     @JsonProperty("imagen")
     private  String imagen;
 
-    public Long getId() {
-        return id;
-    }
+    @JsonProperty("portafolio")
+    private String portafolio;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+
 
 
 

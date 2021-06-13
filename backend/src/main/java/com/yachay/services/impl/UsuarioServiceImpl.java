@@ -95,6 +95,19 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
+    public  UsuarioDto editarPortafolio(Long usuarioId,String portafolio){
+        Usuario perfil = getUsuarioEntityById(usuarioId);
+        perfil.setPortafolio(portafolio);
+        try {
+            perfil = usuarioRepository.save(perfil);
+        } catch (Exception exception) {
+            throw new Error("No se pudo guardar el link");// Todo handle error better
+        }
+
+        return modelMapper.map(getUsuarioEntityById(perfil.getId()),UsuarioDto.class);
+    }
+
+    @Override
     public UsuarioDto loginUsuario(LoginUsuarioDto loginUsuarioDto) {
         return modelMapper.map(getUsuarioEntity(loginUsuarioDto.getCorreo(), loginUsuarioDto.getContraseña()), UsuarioDto.class);
     }
@@ -120,6 +133,17 @@ public class UsuarioServiceImpl implements UsuarioService {
 
         final List<Usuario> usuarioEntity = usuarioRepository.findByRolIs(Rol);
         return usuarioEntity.stream().map(service -> modelMapper.map(service, usuarioRest.class)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<UsuarioDto> findByUniversidad(String universidad){
+        final  List<Usuario> usuarioEntity = usuarioRepository.findByUniversidad(universidad);
+        return usuarioEntity.stream().map(service -> modelMapper.map(service, UsuarioDto.class)).collect(Collectors.toList());
+    }
+
+    @Override
+    public UsuarioDto findPortafolio(java.lang.String nombre){
+        return modelMapper.map(usuarioRepository.findByNombre(nombre), UsuarioDto.class);
     }
 
 }

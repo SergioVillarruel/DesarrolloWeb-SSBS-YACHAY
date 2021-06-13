@@ -16,6 +16,9 @@ public interface UsuarioService {
     //UsuarioDto findContraseñabyEmail(Long usuarioId);
     UsuarioDto findAllUsuarioByCurso(String Nombre);
     UsuarioDto editUsuario(Long usuarioId, CreateUsuarioDto new_datos);
-    public List<usuarioRest> findAllUsuarioByRol(String Rol);
+    List<usuarioRest> findAllUsuarioByRol(String Rol);
     UsuarioDto editarImagen(Long usuarioId,String imagen);
+    List<UsuarioDto> findByUniversidad(String Universidad);
+    UsuarioDto editarPortafolio(Long usuarioId,String portafolio);
+    UsuarioDto findPortafolio(String nombre);
 }
