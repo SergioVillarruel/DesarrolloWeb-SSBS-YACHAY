@@ -95,6 +95,13 @@ public class Usuario {
     )
     private String portafolio;
 
+    @Column(
+            name="tarifa",
+            nullable = true
+            //columnDefinition = "TEXT"
+    )
+    private int tarifa;
+
     @OneToMany(
             mappedBy = "usuario",
             cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
