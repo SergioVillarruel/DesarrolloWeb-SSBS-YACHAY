@@ -142,8 +142,13 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public UsuarioDto findPortafolio(java.lang.String nombre){
+    public UsuarioDto findByNombre(java.lang.String nombre){
         return modelMapper.map(usuarioRepository.findByNombre(nombre), UsuarioDto.class);
+    }
+
+    @Override
+    public String findPortafolio(String nombre){
+        return usuarioRepository.findPortafolio(nombre);
     }
 
 }

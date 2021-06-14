@@ -20,5 +20,6 @@ public interface UsuarioService {
     UsuarioDto editarImagen(Long usuarioId,String imagen);
     List<UsuarioDto> findByUniversidad(String Universidad);
     UsuarioDto editarPortafolio(Long usuarioId,String portafolio);
-    UsuarioDto findPortafolio(String nombre);
+    UsuarioDto findByNombre(String nombre);
+    String findPortafolio(String nombre);
 }

@@ -91,6 +91,11 @@ public class UsuarioController {
                 usuarioService.findByUniversidad(usuarioUniversidad));
     }
 
-    
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/usuarios/findPortafolio/{usuarioNombre}")
+    public ApiResponse<String> findPortafolio(@PathVariable String usuarioNombre){
+        return new ApiResponse<>("Success", String.valueOf(HttpStatus.OK),
+                usuarioService.findPortafolio(usuarioNombre));
+    }
 
 }
