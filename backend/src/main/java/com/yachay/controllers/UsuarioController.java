@@ -1,6 +1,7 @@
 package com.yachay.controllers;
 
 import com.yachay.dtos.CreateUsuarioDto;
+import com.yachay.dtos.EditUsuarioDto;
 import com.yachay.dtos.LoginUsuarioDto;
 import com.yachay.dtos.UsuarioDto;
 import com.yachay.entities.Usuario;
@@ -58,7 +59,7 @@ public class UsuarioController {
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/usuarios/edit/{usuarioId}")
-    public ApiResponse<UsuarioDto> editUsuario(@PathVariable Long usuarioId,@RequestBody CreateUsuarioDto new_data){
+    public ApiResponse<UsuarioDto> editUsuario(@PathVariable Long usuarioId,@RequestBody EditUsuarioDto new_data){
         return new ApiResponse<UsuarioDto>("Success", String.valueOf(HttpStatus.OK), "OK",
                 usuarioService.editUsuario(usuarioId,new_data));
     }
@@ -91,6 +92,11 @@ public class UsuarioController {
                 usuarioService.findByUniversidad(usuarioUniversidad));
     }
 
-    
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/usuarios/findPortafolio/{usuarioNombre}")
+    public ApiResponse<String> findPortafolio(@PathVariable String usuarioNombre){
+        return new ApiResponse<>("Success", String.valueOf(HttpStatus.OK),
+                usuarioService.findPortafolio(usuarioNombre));
+    }
 
 }

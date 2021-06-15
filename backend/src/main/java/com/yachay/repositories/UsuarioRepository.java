@@ -21,8 +21,9 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
    List<Usuario> findAllByCurso(String var1);
    List<Usuario> findByRolIs(String Rol);
    List<Usuario> findByUniversidad(String Universidad);
-   //@Query("select  u.portafolio from Usuario u where u.nombre = ?1")
    Optional<Usuario> findByNombre(String nombre);
+   @Query(value = "select portafolio from usuarios where nombre = ?1",nativeQuery = true)
+   String findPortafolio(String nombre);
 
 
 }

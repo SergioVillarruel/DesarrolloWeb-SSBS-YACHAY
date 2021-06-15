@@ -1,0 +1,23 @@
+<div class="login">
+    <form class="form">
+        <h1 class="title">Login</h1>
+        <h1 class="logo">Yachay</h1>
+        <input 
+        type="email" 
+        [(ngModel)]="email" 
+        name="email" 
+        placeholder="Email" 
+        required="required"
+        />
+        <input
+        type="password" 
+        [(ngModel)]="password" 
+        name="password" 
+        placeholder="password" 
+        required="password"
+        />
+    
+        <button type="submit" (click)="login()">Log in</button>
+  
+    </form>
+</div>

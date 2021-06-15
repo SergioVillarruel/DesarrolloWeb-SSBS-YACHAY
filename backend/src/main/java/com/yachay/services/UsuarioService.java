@@ -1,6 +1,7 @@
 package com.yachay.services;
 
 import com.yachay.dtos.CreateUsuarioDto;
+import com.yachay.dtos.EditUsuarioDto;
 import com.yachay.dtos.LoginUsuarioDto;
 import com.yachay.dtos.UsuarioDto;
 import com.yachay.entities.Usuario;
@@ -15,10 +16,11 @@ public interface UsuarioService {
     UsuarioDto loginUsuario(LoginUsuarioDto loginUsuarioDto);
     //UsuarioDto findContraseñabyEmail(Long usuarioId);
     UsuarioDto findAllUsuarioByCurso(String Nombre);
-    UsuarioDto editUsuario(Long usuarioId, CreateUsuarioDto new_datos);
+    UsuarioDto editUsuario(Long usuarioId, EditUsuarioDto new_datos);
     List<usuarioRest> findAllUsuarioByRol(String Rol);
     UsuarioDto editarImagen(Long usuarioId,String imagen);
     List<UsuarioDto> findByUniversidad(String Universidad);
     UsuarioDto editarPortafolio(Long usuarioId,String portafolio);
-    UsuarioDto findPortafolio(String nombre);
+    UsuarioDto findByNombre(String nombre);
+    String findPortafolio(String nombre);
 }

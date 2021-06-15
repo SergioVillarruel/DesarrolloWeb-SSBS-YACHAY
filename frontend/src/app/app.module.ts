@@ -15,9 +15,17 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { PerfilPageComponent } from './perfil-page/perfil-page.component';
 
 @NgModule({
-  declarations: [AppComponent, SignupPageComponent, HomePageComponent],
+  declarations: [
+    AppComponent,
+    SignupPageComponent,
+    HomePageComponent,
+    LoginPageComponent,
+    PerfilPageComponent,
+  ],
   imports: [
     BrowserModule,
     FormsModule,

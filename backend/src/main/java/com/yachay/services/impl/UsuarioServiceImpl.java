@@ -1,6 +1,7 @@
 package com.yachay.services.impl;
 
 import com.yachay.dtos.CreateUsuarioDto;
+import com.yachay.dtos.EditUsuarioDto;
 import com.yachay.dtos.LoginUsuarioDto;
 import com.yachay.dtos.UsuarioDto;
 import com.yachay.entities.Usuario;
@@ -41,7 +42,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public UsuarioDto editUsuario(Long usuarioId, CreateUsuarioDto new_datos){
+    public UsuarioDto editUsuario(Long usuarioId, EditUsuarioDto new_datos){
         Usuario perfil = getUsuarioEntityById(usuarioId);
 
         perfil.setContraseña(new_datos.getContraseña());
@@ -50,6 +51,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         perfil.setNombre(new_datos.getNombre());
         perfil.setFecha_de_nacimiento(toLocalDate(new_datos.getFecha_de_nacimiento()));
         perfil.setRol(new_datos.getRol());
+        perfil.setTarifa(new_datos.getTarifa());
 
         try {
             perfil = usuarioRepository.save(perfil);
@@ -142,8 +144,13 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public UsuarioDto findPortafolio(java.lang.String nombre){
+    public UsuarioDto findByNombre(java.lang.String nombre){
         return modelMapper.map(usuarioRepository.findByNombre(nombre), UsuarioDto.class);
+    }
+
+    @Override
+    public String findPortafolio(String nombre){
+        return usuarioRepository.findPortafolio(nombre);
     }
 
 }

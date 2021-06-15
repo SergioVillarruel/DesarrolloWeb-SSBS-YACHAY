@@ -1,0 +1,29 @@
+.login {
+    max-width: 25%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+  }
+
+.logo {
+    color: aqua;
+    font-weight: bold;
+    text-align: center;
+    
+}
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 200px;
+    box-shadow: 1px 1px 1px 1px black;
+}
+
+
+.title {
+    text-align: center;
+}
