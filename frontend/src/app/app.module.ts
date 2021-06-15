@@ -13,10 +13,11 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { PerfilPageComponent } from './perfil-page/perfil-page.component';
 
 
 @NgModule({
-  declarations: [AppComponent, SignupPageComponent, HomePageComponent, LoginPageComponent],
+  declarations: [AppComponent, SignupPageComponent, HomePageComponent, LoginPageComponent,  PerfilPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
