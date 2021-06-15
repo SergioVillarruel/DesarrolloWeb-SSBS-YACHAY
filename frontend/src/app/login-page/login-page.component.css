@@ -7,13 +7,20 @@
     justify-content: center;
   }
 
-
+.logo {
+    color: aqua;
+    font-weight: bold;
+    text-align: center;
+    
+}
 
 
 .form {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    width: 400px;
+    height: 200px;
+    box-shadow: 1px 1px 1px 1px black;
 }
 
 
