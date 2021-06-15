@@ -8,6 +8,7 @@ export interface IUser {
   universidad?: string;
   imagen?: string;
   portafolio?: string;
+  tarifa?: number;
   genero?: string;
 }
 
