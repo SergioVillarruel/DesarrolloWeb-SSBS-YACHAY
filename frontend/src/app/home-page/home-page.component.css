@@ -39,3 +39,23 @@
 .search form button {
   align-self: flex-end;
 }
+
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-size: cover;
+}
+
+ul {
+  display: flex;
+  margin-top: 2rem;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+li {
+  margin: 1rem;
+}

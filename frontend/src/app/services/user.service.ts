@@ -17,9 +17,9 @@ export class UserService {
       .pipe(catchError((e) => throwError(e)));
   }
 
-  createUser(user: IUser): Observable<IUser> {
+  createUser(user: IUser | undefined): Observable<UserResponse> {
     return this.http
-      .post<IUser>(`${environment.apiUrl}/usuarios/register`, user)
+      .post<UserResponse>(`${environment.apiUrl}/usuarios/register`, user)
       .pipe(catchError((e) => throwError(e)));
   }
 }

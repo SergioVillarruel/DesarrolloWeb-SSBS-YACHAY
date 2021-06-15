@@ -1,14 +1,14 @@
 export interface IUser {
-  id: number;
+  id?: number;
   nombre: string;
-  fecha_de_nacimiento: Date;
-  rol: string;
+  fecha_de_nacimiento?: Date;
+  rol?: string;
   correo: string;
   contraseña?: string;
-  universidad: string;
-  imagen: string;
-  portafolio: string;
-  genero: string;
+  universidad?: string;
+  imagen?: string;
+  portafolio?: string;
+  genero?: string;
 }
 
 export interface UserResponse {
@@ -16,4 +16,11 @@ export interface UserResponse {
   message: string;
   status: string;
   data: IUser;
+}
+
+export interface TutorsResponse {
+  code: string;
+  message: string;
+  status: string;
+  data: IUser[];
 }

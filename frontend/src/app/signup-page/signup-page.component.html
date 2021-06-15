@@ -4,22 +4,50 @@
   <form class="form">
     <mat-form-field class="example-full-width">
       <mat-label>Nombre</mat-label>
-      <input matInput placeholder="Ingrese su nombre" />
+      <input
+        matInput
+        placeholder="Ingrese su nombre"
+        name="name"
+        [(ngModel)]="user.nombre"
+        required
+      />
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <mat-label>Correo</mat-label>
-      <input matInput placeholder="Ingrese su correo" />
+      <input
+        matInput
+        placeholder="Ingrese su correo"
+        name="contrasenia"
+        [(ngModel)]="user.correo"
+        required
+      />
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <mat-label>Contraseña</mat-label>
-      <input type="password" matInput placeholder="Ingrese su contraseña" />
+      <input
+        type="password"
+        matInput
+        name="password"
+        placeholder="Ingrese su contraseña"
+        [(ngModel)]="password"
+        required
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Sexo</mat-label>
+      <mat-select [(ngModel)]="sexSelected" name="sexo">
+        <mat-option *ngFor="let sexo of sexos" [value]="sexo.value">
+          {{ sexo.viewValue }}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Universidad</mat-label>
-      <mat-select>
+      <mat-select [(ngModel)]="uniSelected" name="universidad">
         <mat-option
           *ngFor="let universidad of universidades"
           [value]="universidad.value"
@@ -30,19 +58,28 @@
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput type="date" name="" id="" />
+      <input
+        matInput
+        type="date"
+        [(ngModel)]="user.fecha_de_nacimiento"
+        name="nacimiento"
+      />
     </mat-form-field>
 
-    <div class="rol">
-      <mat-checkbox class="example-margin" color="primary">
-        Alumno
-      </mat-checkbox>
-      <mat-checkbox class="example-margin" color="primary">
-        Tutor
-      </mat-checkbox>
+    <div>
+      <mat-radio-group
+        class="rol"
+        aria-label="Select an option"
+        color="primary"
+        name="rol"
+        [(ngModel)]="rolSelected"
+      >
+        <mat-radio-button value="estudiante">Estudiante</mat-radio-button>
+        <mat-radio-button value="tutor">Tutor</mat-radio-button>
+      </mat-radio-group>
     </div>
 
-    <button mat-stroked-button color="primary" (click)="getUser($event)">
+    <button mat-stroked-button color="primary" (click)="registerUser($event)">
       Registrarse
     </button>
   </form>
