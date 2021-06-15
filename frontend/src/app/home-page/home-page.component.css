@@ -1,0 +1,41 @@
+.logo {
+  color: aqua;
+  font-weight: bold;
+  font-size: 2rem;
+  margin-left: 1rem;
+}
+
+.navbar {
+  background-color: gainsboro;
+}
+
+.text-area textarea {
+  resize: none;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.search form {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid gray;
+  border-radius: 4px;
+  box-shadow: -2px 18px 21px -5px rgba(0, 0, 0, 0.39);
+  padding: 0.75rem;
+}
+
+.text-area {
+  min-width: 400px;
+}
+
+.text-area input {
+  padding: 0.5rem;
+}
+
+.search form button {
+  align-self: flex-end;
+}

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IUser } from '../interfaces/user.interface';
+import { UserService } from '../services/user.service';
 
 interface Universidad {
   value: string;
@@ -18,7 +20,14 @@ export class SignupPageComponent implements OnInit {
     { value: 'UCH', viewValue: 'Univ. Cayetano Heredia' },
   ];
 
-  constructor() {}
+  user?: IUser;
+
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {}
+
+  getUser(e: any): void {
+    e.preventDefault();
+    this.userService.getUser(1).subscribe((user) => (this.user = user.data));
+  }
 }
