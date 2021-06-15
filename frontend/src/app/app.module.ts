@@ -10,9 +10,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { HomePageComponent } from './home-page/home-page.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
-  declarations: [AppComponent, SignupPageComponent, HomePageComponent],
+  declarations: [AppComponent, SignupPageComponent, HomePageComponent, LoginPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -21,6 +25,7 @@ import { HomePageComponent } from './home-page/home-page.component';
     MatButtonModule,
     MatCheckboxModule,
     MatSelectModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
