@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { IUser, UserResponse } from '../interfaces/user.interface';
+import { User } from '../User/user';
 
 @Injectable({
   providedIn: 'root',
@@ -22,4 +23,11 @@ export class UserService {
       .post<UserResponse>(`${environment.apiUrl}/usuarios/register`, user)
       .pipe(catchError((e) => throwError(e)));
   }
+
+  getAll(){
+    return this.http.get<User[]>(`${environment.apiUrl}/users`);
+  }
+
+
+
 }

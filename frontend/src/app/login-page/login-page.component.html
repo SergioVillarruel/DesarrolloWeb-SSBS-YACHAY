@@ -1,23 +1,25 @@
 <div class="login">
-    <form class="form">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <h1 class="title">Login</h1>
         <h1 class="logo">Yachay</h1>
         <input 
-        type="email" 
-        [(ngModel)]="email" 
-        name="email" 
-        placeholder="Email" 
-        required="required"
+        type="text"
+        name="correo"
+        formControlName="correo"
+        class="forn-control"
+        [ngClass] = "{'is-invalid': submitted && f.correo.errors}"
+        required
         />
-        <input
-        type="password" 
-        [(ngModel)]="password" 
-        name="password" 
-        placeholder="password" 
-        required="password"
+        <input type="password"
+        formControlName="password"
+        class="forn-control"
+        [ngClass] = "{'is-invalid': submitted && f.password.errors}"
+        required
         />
-    
-        <button type="submit"  (click)="login()">Log in</button>
+        <div>
+            <button >Log in</button>
+        </div>
+        
   
     </form>
 </div>
