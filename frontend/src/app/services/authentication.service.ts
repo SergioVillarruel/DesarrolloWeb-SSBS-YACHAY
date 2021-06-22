@@ -1,12 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { IUser } from '../interfaces/user.interface';
+import { IUser, UserResponse } from '../interfaces/user.interface';
 import { User } from '../User/user';
 
+export interface LoginUsuario{
+  correo : string;
+  contraseña : string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -29,18 +33,14 @@ export class AuthenticationService {
    }
 
 
-   login(username: string, password: string){
-     return this.http.post<any>(`${environment.apiUrl}usuarios/login`, {username, password}).pipe(map(user => {
-       user.authdata = window.btoa(username+ ':'+ password);
-       localStorage.setItem('user', JSON.stringify(user));
-       this.userSubject.next(user);
-       return user;
-     }));
+   login(loginUsuario: LoginUsuario){
+     return this.http.post<UserResponse>(`${environment.apiUrl}/usuarios/login`, loginUsuario)
+     .pipe(catchError((e) => throwError(e)));
+    
    }
 
    logout(){
      localStorage.removeItem('user');
-     //this.userSubject.next(null);
      this.router.navigate(['/home'])
    }
 }

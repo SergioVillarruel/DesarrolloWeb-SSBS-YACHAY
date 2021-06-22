@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { AuthenticationService } from '../services/authentication.service';
+import { AuthenticationService, LoginUsuario } from '../services/authentication.service';
 /*import { UsersService } from '../user/user.service';*/
 
 @Component({
@@ -13,6 +13,8 @@ import { AuthenticationService } from '../services/authentication.service';
 
 export class LoginPageComponent implements OnInit {
 
+  user  : LoginUsuario = {correo: '', contraseña: ''}
+  password = ''
   //----
   loginForm!: FormGroup;
   loading = false;
@@ -23,47 +25,21 @@ export class LoginPageComponent implements OnInit {
   //---
 
   constructor(
-    private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
-    private authenticationService: AuthenticationService
-  ) { 
-    if(this.authenticationService.userValue){
-      this.router.navigate(['/'])
-    }
-
-  }
+    
+    private authenticationService: AuthenticationService) { }
 
   ngOnInit(){
-    this.loginForm = this.formBuilder.group({
-      correo: ['', Validators.required],
-      password: ['', Validators.required]
-    });
-    this.returnUrl = this.route.snapshot.queryParams['home'] || '/';
+  
   }
 
-  get f() { return this.loginForm!.controls;}
-
-
-
-  onSubmit(){
-    this.submitted = true;
-
-    console.log(this.f.correo.value);
-    console.log(this.f.password.value);
+  login(e :any){
     
-    if (this.loginForm!.invalid){ return;}
-
-    this.loading = true;
-    this.authenticationService.login(this.f.correo.value, this.f.password.value).pipe(first())
-    .subscribe(data => {
-      this.router.navigate([this.returnUrl]);
-
-    },
-    error =>{
-      this.error = error;
-      this.loading = false;
-    });
-
+    e.preventDefault();
+      this.user.contraseña = this.password 
+      this.authenticationService.login(this.user).subscribe((res) => console.log(res))
+  
   }
 }
+
+
+// editar perfil para que agrege imagen.
