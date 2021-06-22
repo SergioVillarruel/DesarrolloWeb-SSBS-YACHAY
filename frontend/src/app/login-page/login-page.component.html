@@ -1,23 +1,24 @@
 <div class="login">
-    <form class="form">
+    <form  >
         <h1 class="title">Login</h1>
         <h1 class="logo">Yachay</h1>
         <input 
-        type="email" 
-        [(ngModel)]="email" 
-        name="email" 
-        placeholder="Email" 
-        required="required"
+        type="text"
+        name="correo"
+        class="forn-control"
+        [(ngModel)]="user.correo"
+        required
         />
-        <input
-        type="password" 
-        [(ngModel)]="password" 
-        name="password" 
-        placeholder="password" 
-        required="password"
+        <input type="password"
+        name = "password"
+        class="forn-control"
+        [(ngModel)]="password"
+        required
         />
-    
-        <button type="submit" (click)="login()">Log in</button>
+        <div>
+            <button type="submit" (click)="login($event)" >Log in</button>
+        </div>
+        
   
     </form>
 </div>
