@@ -47,10 +47,7 @@ public class ReservaServiceImpl implements ReservaService {
         Reserva reserva = new Reserva();
 
         reserva.setAlumno(alumnoID);
-
-
         reserva.setTutor(tutorID);
-
         reserva.setFecha(createReservaDto.getFecha());
 
         String locator = generateLocator(alumnoID,tutorID, createReservaDto);
