@@ -1,5 +1,6 @@
 package com.yachay.services.impl;
 
+import com.yachay.dtos.*;
 import com.yachay.dtos.CreateReservaDto;
 import com.yachay.dtos.ReservaDto;
 import com.yachay.entities.Reserva;
@@ -8,13 +9,18 @@ import com.yachay.repositories.ReservaRepository;
 import com.yachay.repositories.UsuarioRepository;
 import com.yachay.services.ReservaService;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 
+@Service
 public class ReservaServiceImpl implements ReservaService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(ReservaServiceImpl.class);
 
     @Autowired
     private ReservaRepository reservaRepository;
@@ -33,16 +39,21 @@ public class ReservaServiceImpl implements ReservaService {
 
     @Transactional
     @Override
-    public ReservaDto createReserva(CreateReservaDto createReservaDto){
+    public String createReserva(CreateReservaDto createReservaDto){
 
         final Usuario alumnoID = getUsuarioEntityById(createReservaDto.getAlumnoID());
-
         final Usuario tutorID = getUsuarioEntityById(createReservaDto.getTutorID());
 
         Reserva reserva = new Reserva();
+
         reserva.setAlumno(alumnoID);
+
+
         reserva.setTutor(tutorID);
+
         reserva.setFecha(createReservaDto.getFecha());
+
+        String locator = generateLocator(alumnoID,tutorID, createReservaDto);
 
 
         try {
@@ -51,6 +62,13 @@ public class ReservaServiceImpl implements ReservaService {
             throw new Error("No se pudo crear reserva");// Todo handle error better
         }
 
-        return modelMapper.map(getReservaEntityById(reserva.getId()), ReservaDto.class);
+
+
+        return locator;
+    }
+
+    private String generateLocator(final Usuario alumnoID,final Usuario tutorID, final CreateReservaDto createReservaDto){
+
+        return alumnoID.getNombre() +" "+ tutorID.getNombre() + " " + createReservaDto.getFecha();
     }
 }

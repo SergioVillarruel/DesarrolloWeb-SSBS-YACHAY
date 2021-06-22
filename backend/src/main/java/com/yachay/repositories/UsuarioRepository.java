@@ -24,6 +24,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
    Optional<Usuario> findByNombre(String nombre);
    @Query(value = "select portafolio from usuarios where nombre = ?1",nativeQuery = true)
    String findPortafolio(String nombre);
+   @Query(value = "select * from usuarios where id =?1",nativeQuery = true)
+   Optional<Usuario> findUsuarioBy(Long usuarioId);
 
 
 }

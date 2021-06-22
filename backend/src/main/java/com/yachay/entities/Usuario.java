@@ -100,7 +100,7 @@ public class Usuario {
             nullable = true
             //columnDefinition = "TEXT"
     )
-    private int tarifa;
+    private Integer tarifa;
 
     @OneToMany(
             mappedBy = "usuario",
