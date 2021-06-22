@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { IUser, UserResponse } from '../interfaces/user.interface';
-import { User } from '../User/user';
+
 
 export interface LoginUsuario{
   correo : string;
@@ -16,19 +16,19 @@ export interface LoginUsuario{
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private userSubject!: BehaviorSubject<User>;
-  public user: Observable<User>;
+  private userSubject!: BehaviorSubject<IUser>;
+  public user: Observable<IUser>;
 
   constructor(
     private router: Router,
     private http: HttpClient
   ) {
-    this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('User')!));
+    this.userSubject = new BehaviorSubject<IUser>(JSON.parse(localStorage.getItem('User')!));
     this.user = this.userSubject.asObservable();
    }
 
 
-   public get userValue(): User{
+   public get userValue(): IUser{
      return this.userSubject.value;
    }
 

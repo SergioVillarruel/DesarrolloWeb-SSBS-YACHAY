@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../User/user';
+import { IUser } from '../interfaces/user.interface';
 
 @Component({
   selector: 'app-perfil-page',
@@ -8,19 +9,12 @@ import { User } from '../User/user';
 })
 export class PerfilPageComponent implements OnInit {
 
-  user:User={
-    
-    nombre: "Carlos",
-    apellido: "Martin Sanchez",
-    rol: "Maestro",
-    edad: 15,
-    universidad: "UPC",
-    email:'pepe@gmail.com',
-    password: '1234'
-  };
+  
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  capturarFile(event: any) {
+    
+  }
 }

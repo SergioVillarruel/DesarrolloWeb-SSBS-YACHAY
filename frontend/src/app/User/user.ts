@@ -6,4 +6,5 @@ export interface User{
     edad: number;
     rol: string;
     universidad: string;
+    
 }

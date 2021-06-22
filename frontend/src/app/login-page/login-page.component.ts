@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { AuthenticationService, LoginUsuario } from '../services/authentication.service';
-/*import { UsersService } from '../user/user.service';*/
 
 @Component({
   selector: 'app-login-page',
@@ -16,17 +15,16 @@ export class LoginPageComponent implements OnInit {
   user  : LoginUsuario = {correo: '', contraseña: ''}
   password = ''
   //----
-  loginForm!: FormGroup;
-  loading = false;
-  submitted = false;
-  returnUrl!: string;
-  error = ''; 
+ 
 
   //---
 
   constructor(
     
-    private authenticationService: AuthenticationService) { }
+    private authenticationService: AuthenticationService,
+    private router: Router,
+
+    ) { }
 
   ngOnInit(){
   
@@ -37,7 +35,10 @@ export class LoginPageComponent implements OnInit {
     e.preventDefault();
       this.user.contraseña = this.password 
       this.authenticationService.login(this.user).subscribe((res) => console.log(res))
-  
+
+      if (this.authenticationService.user){
+        this.router.navigate(['/prof']);
+      }
   }
 }
 

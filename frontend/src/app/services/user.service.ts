@@ -24,9 +24,6 @@ export class UserService {
       .pipe(catchError((e) => throwError(e)));
   }
 
-  getAll(){
-    return this.http.get<User[]>(`${environment.apiUrl}/users`);
-  }
 
 
 

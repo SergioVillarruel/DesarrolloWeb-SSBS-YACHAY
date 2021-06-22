@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { IUser } from './interfaces/user.interface';
 import { AuthenticationService } from './services/authentication.service';
-import { User } from './User/user';
+
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ export class AppComponent {
   title = 'king';
 
 
-  user!:User;
+  user!:IUser;
 
   constructor(
     private router:Router,
