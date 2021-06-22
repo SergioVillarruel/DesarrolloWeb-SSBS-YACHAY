@@ -26,9 +26,27 @@ public class CursoServiceImpl implements CursoService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    private static final ModelMapper modelMapper = new ModelMapper();
+
+    private Curso getCursoEntityById(Long cursoId) {
+        return cursoRepository.findById(cursoId).orElse(null);// Todo Add exception
+    }
+
     @Transactional
     @Override
     public CursoDto createCurso(CreateCursoDto createCursoDto){
-        return CursoDto;
+        Curso new_curso = new Curso();
+
+        new_curso.setNombre(createCursoDto.getNombre());
+        new_curso.setCiclo(createCursoDto.getCiclo());
+        new_curso.setUniversidad(createCursoDto.getUniversidad());
+
+        try {
+            new_curso = cursoRepository.save(new_curso);
+        } catch (Exception exception) {
+            throw new Error("No se pudo crear el curso");// Todo handle error better
+        }
+
+        return modelMapper.map(getCursoEntityById(new_curso.getId()),CursoDto.class);
     }
 }
