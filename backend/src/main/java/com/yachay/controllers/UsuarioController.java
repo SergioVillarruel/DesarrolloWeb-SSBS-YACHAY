@@ -1,9 +1,6 @@
 package com.yachay.controllers;
 
-import com.yachay.dtos.CreateUsuarioDto;
-import com.yachay.dtos.EditUsuarioDto;
-import com.yachay.dtos.LoginUsuarioDto;
-import com.yachay.dtos.UsuarioDto;
+import com.yachay.dtos.*;
 import com.yachay.entities.Usuario;
 import com.yachay.jsons.usuarioRest;
 import com.yachay.responses.ApiResponse;
@@ -13,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -61,7 +59,7 @@ public class UsuarioController {
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/usuarios/edit/{usuarioId}")
     public ApiResponse<UsuarioDto> editUsuario(@PathVariable Long usuarioId,@RequestBody EditUsuarioDto new_data){
-        return new ApiResponse<UsuarioDto>("Success", String.valueOf(HttpStatus.OK), "OK",
+        return new ApiResponse<>("Success", String.valueOf(HttpStatus.OK), "OK",
                 usuarioService.editUsuario(usuarioId,new_data));
     }
 
@@ -75,7 +73,7 @@ public class UsuarioController {
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/usuarios/editImagen/{usuarioId}")
     public ApiResponse<UsuarioDto> editarImagen(@PathVariable Long usuarioId,@RequestBody String imagen){
-        return new ApiResponse<UsuarioDto>("Success", String.valueOf(HttpStatus.OK), "OK",
+        return new ApiResponse<>("Success", String.valueOf(HttpStatus.OK), "OK",
                 usuarioService.editarImagen(usuarioId,imagen));
     }
 
@@ -99,5 +97,7 @@ public class UsuarioController {
         return new ApiResponse<>("Success", String.valueOf(HttpStatus.OK),
                 usuarioService.findPortafolio(usuarioNombre));
     }
+
+
 
 }

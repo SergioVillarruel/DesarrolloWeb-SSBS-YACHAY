@@ -1,12 +1,10 @@
 package com.yachay.services;
 
-import com.yachay.dtos.CreateUsuarioDto;
-import com.yachay.dtos.EditUsuarioDto;
-import com.yachay.dtos.LoginUsuarioDto;
-import com.yachay.dtos.UsuarioDto;
+import com.yachay.dtos.*;
 import com.yachay.entities.Usuario;
 import com.yachay.jsons.usuarioRest;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface UsuarioService {
@@ -23,4 +21,5 @@ public interface UsuarioService {
     UsuarioDto editarPortafolio(Long usuarioId,String portafolio);
     UsuarioDto findByNombre(String nombre);
     String findPortafolio(String nombre);
+
 }

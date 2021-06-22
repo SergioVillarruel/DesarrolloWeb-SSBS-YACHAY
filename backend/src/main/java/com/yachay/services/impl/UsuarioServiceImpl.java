@@ -1,10 +1,9 @@
 package com.yachay.services.impl;
 
-import com.yachay.dtos.CreateUsuarioDto;
-import com.yachay.dtos.EditUsuarioDto;
-import com.yachay.dtos.LoginUsuarioDto;
-import com.yachay.dtos.UsuarioDto;
+import com.yachay.dtos.*;
+import com.yachay.entities.Reserva;
 import com.yachay.entities.Usuario;
+import com.yachay.repositories.ReservaRepository;
 import com.yachay.repositories.UsuarioRepository;
 import com.yachay.services.UsuarioService;
 import com.yachay.jsons.usuarioRest;
@@ -15,6 +14,7 @@ import org.springframework.stereotype.Service;
 import javax.swing.plaf.synth.ColorType;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,6 +23,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
 
     private static final ModelMapper modelMapper = new ModelMapper();
 
@@ -152,5 +153,6 @@ public class UsuarioServiceImpl implements UsuarioService {
     public String findPortafolio(String nombre){
         return usuarioRepository.findPortafolio(nombre);
     }
+
 
 }
