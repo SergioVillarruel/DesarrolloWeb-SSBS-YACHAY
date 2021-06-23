@@ -54,7 +54,7 @@ export class SignupPageComponent implements OnInit {
     this.user.universidad = this.uniSelected;
     this.user.genero = this.sexSelected;
     this.user.rol = this.rolSelected;
-    this.user.contraseña = this.password;
+    this.user.password = this.password;
     this.userService.createUser(this.user).subscribe((res) => console.log(res));
   }
 }

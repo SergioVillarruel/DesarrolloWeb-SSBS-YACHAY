@@ -4,7 +4,7 @@ export interface IUser {
   fecha_de_nacimiento?: Date;
   rol?: string;
   correo: string;
-  contraseña?: string;
+  password?: string;
   universidad?: string;
   imagen?: string;
   portafolio?: string;
