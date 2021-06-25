@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IUser } from '../interfaces/user.interface';
 import { TutorService } from '../services/tutor.service';
 
@@ -11,7 +12,7 @@ export class HomePageComponent implements OnInit {
   course: string = '';
   tutors: IUser[] = [];
 
-  constructor(private tutorService: TutorService) {}
+  constructor(private tutorService: TutorService, private router:Router) {}
 
   ngOnInit(): void {}
 
@@ -22,4 +23,11 @@ export class HomePageComponent implements OnInit {
       .subscribe((res) => (this.tutors = res.data));
     console.log(this.tutors);
   }
+
+  goProfUrl(rlink: string = ''): void{
+    this.router.navigate([`${rlink}`]);
+  }
+
+
+
 }

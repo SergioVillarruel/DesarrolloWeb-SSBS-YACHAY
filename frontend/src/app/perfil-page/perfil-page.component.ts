@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from '../User/user';
 import { IUser } from '../interfaces/user.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil-page',
@@ -22,14 +23,7 @@ export class PerfilPageComponent implements OnInit {
 
   }
 
- 
-
-
-  constructor() { 
-    
-    
-
-  }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -37,7 +31,9 @@ export class PerfilPageComponent implements OnInit {
   capturarFile() {}
 
 
-
+  goBackUrl(rlink: string = ''): void{
+    this.router.navigate([`${rlink}`]);
+  }
 
 
 }

@@ -12,8 +12,8 @@ import { AuthenticationService, LoginUsuario } from '../services/authentication.
 
 export class LoginPageComponent implements OnInit {
 
-  user  : LoginUsuario = {correo: '', contraseña: ''}
-  password = ''
+  user  : LoginUsuario = {correo: 'asd@gmail.com', contraseña: '123'}
+  password = '123'
   //----
  
 
@@ -37,7 +37,7 @@ export class LoginPageComponent implements OnInit {
       this.authenticationService.login(this.user).subscribe((res) => console.log(res))
 
       if (this.authenticationService.user){
-        this.router.navigate(['/prof']);
+        this.router.navigate(['/home']);
       }
   }
 }
