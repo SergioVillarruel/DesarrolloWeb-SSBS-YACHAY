@@ -1,0 +1,50 @@
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: auto;
+  margin-top: 1rem;
+}
+
+h1 {
+  margin: auto;
+  max-width: 400px;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+span {
+  color: aquamarine;
+}
+
+.container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+img {
+  border-radius: 1rem;
+}
+
+.user h2 {
+  color: blueviolet;
+}
+
+.tutor h2 {
+  color: aqua;
+}
+
+button {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-weight: bold;
+  color: white;
+  border-radius: 999px;
+  border: none;
+  background-color: aqua;
+}
+
+button:hover {
+  color: aqua;
+  background-color: white;
+}

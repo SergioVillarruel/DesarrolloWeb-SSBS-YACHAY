@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IUser } from '../interfaces/user.interface';
 import { UserService } from '../services/user.service';
 
@@ -40,14 +41,9 @@ export class SignupPageComponent implements OnInit {
     fecha_de_nacimiento: new Date(),
   };
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {}
-
-  // getUser(e: any): void {
-  //   e.preventDefault();
-  //   this.userService.getUser(1).subscribe((user) => (this.user = user.data));
-  // }
 
   registerUser(e: any): void {
     e.preventDefault();
@@ -55,6 +51,10 @@ export class SignupPageComponent implements OnInit {
     this.user.genero = this.sexSelected;
     this.user.rol = this.rolSelected;
     this.user.password = this.password;
-    this.userService.createUser(this.user).subscribe((res) => console.log(res));
+    this.userService.createUser(this.user).subscribe((res) => {
+      console.log(res);
+      this.user = res.data;
+      this.router.navigateByUrl('/home', { state: this.user });
+    });
   }
 }

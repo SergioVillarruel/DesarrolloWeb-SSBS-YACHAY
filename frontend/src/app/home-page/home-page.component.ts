@@ -11,8 +11,9 @@ import { TutorService } from '../services/tutor.service';
 export class HomePageComponent implements OnInit {
   course: string = '';
   tutors: IUser[] = [];
+  user: IUser = history.state;
 
-  constructor(private tutorService: TutorService, private router:Router) {}
+  constructor(private tutorService: TutorService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -24,10 +25,14 @@ export class HomePageComponent implements OnInit {
     console.log(this.tutors);
   }
 
-  goProfUrl(rlink: string = ''): void{
-    this.router.navigate([`${rlink}`]);
+  reserva(e: any, tutor: IUser): void {
+    e.preventDefault();
+    console.log(tutor);
+    this.router.navigateByUrl('/reservation', {
+      state: {
+        currentUser: this.user,
+        tutor: tutor,
+      },
+    });
   }
-
-
-
 }

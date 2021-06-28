@@ -17,6 +17,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { PerfilPageComponent } from './perfil-page/perfil-page.component';
+import { ReservationComponent } from './reservation/reservation.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { PerfilPageComponent } from './perfil-page/perfil-page.component';
     HomePageComponent,
     LoginPageComponent,
     PerfilPageComponent,
+    ReservationComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

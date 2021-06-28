@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+
+<h1>Reserva a tu nuevo <span>Tutor</span>!</h1>
+<form>
+  <div class="container">
+    <div class="user">
+      <h2>
+        {{ user.nombre }}
+      </h2>
+      <img
+        height="250"
+        width="250"
+        src="https://material.angular.io/assets/img/examples/shiba1.jpg"
+        alt=""
+      />
+    </div>
+    <div class="tutor">
+      <h2>
+        {{ tutor.nombre }}
+      </h2>
+      <img
+        height="250"
+        width="250"
+        src="https://material.angular.io/assets/img/examples/shiba1.jpg"
+        alt=""
+      />
+    </div>
+  </div>
+  <mat-form-field>
+    <input
+      matInput
+      type="datetime-local"
+      [(ngModel)]="reservationDate"
+      name="reservation"
+    />
+  </mat-form-field>
+  <button (click)="reserve()">Realizar reserva</button>
+</form>
