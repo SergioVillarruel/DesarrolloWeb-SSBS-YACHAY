@@ -29,7 +29,15 @@ public class CursoServiceImpl implements CursoService {
     private static final ModelMapper modelMapper = new ModelMapper();
 
     private Curso getCursoEntityById(Long cursoId) {
-        return cursoRepository.findById(cursoId).orElse(null);// Todo Add exception
+        return cursoRepository.findById(cursoId).orElse(null);
+    }
+
+    private Curso getCursoEntityByNombre(String nombre){
+        return cursoRepository.findByNombre(nombre).orElse(null);
+    }
+
+    public CursoDto findByNombre(String nombre){
+        return modelMapper.map(getCursoEntityByNombre(nombre),CursoDto.class);
     }
 
     @Transactional
@@ -49,4 +57,6 @@ public class CursoServiceImpl implements CursoService {
 
         return modelMapper.map(getCursoEntityById(new_curso.getId()),CursoDto.class);
     }
+
+
 }

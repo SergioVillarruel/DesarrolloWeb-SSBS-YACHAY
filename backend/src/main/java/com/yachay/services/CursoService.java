@@ -6,4 +6,6 @@ import com.yachay.dtos.CursoDto;
 public interface CursoService {
 
     CursoDto createCurso(CreateCursoDto createCursoDto);
+
+    CursoDto findByNombre(String nombre);
 }

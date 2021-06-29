@@ -1,10 +1,14 @@
 package com.yachay.services.impl;
 
 import com.yachay.dtos.*;
+import com.yachay.entities.Curso;
+import com.yachay.entities.Curso_Usuario;
 import com.yachay.entities.Reserva;
 import com.yachay.entities.Usuario;
+import com.yachay.repositories.CursoRepository;
 import com.yachay.repositories.ReservaRepository;
 import com.yachay.repositories.UsuarioRepository;
+import com.yachay.services.CursoService;
 import com.yachay.services.UsuarioService;
 import com.yachay.jsons.usuarioRest;
 import org.modelmapper.ModelMapper;
@@ -24,6 +28,8 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    @Autowired
+    private CursoRepository cursoRepository;
 
     private static final ModelMapper modelMapper = new ModelMapper();
 
@@ -38,8 +44,10 @@ public class UsuarioServiceImpl implements UsuarioService {
     //}
 
     @Override
-    public UsuarioDto findAllUsuarioByCurso(String Nombre) {
-        return modelMapper.map(usuarioRepository.findAllByCurso(Nombre),UsuarioDto.class);
+    public List<UsuarioDto> findAllUsuarioByCurso(String Nombre) {
+        Curso curso = cursoRepository.findByNombre(Nombre).orElse(null);
+        final  List<Usuario> usuarioEntity = usuarioRepository.findAllByCursoId(curso.getId());
+        return usuarioEntity.stream().map(service -> modelMapper.map(service, UsuarioDto.class)).collect(Collectors.toList());
     }
 
     @Override

@@ -51,7 +51,7 @@ public class UsuarioController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/usuarios/curso/{usuarioCurso}")
-    public ApiResponse<UsuarioDto> findAllByCurso(@PathVariable String usuarioCurso){
+    public ApiResponse<List<UsuarioDto>> findAllByCurso(@PathVariable String usuarioCurso){
         return new ApiResponse<>("Success", String.valueOf(HttpStatus.OK), "OK",
                 usuarioService.findAllUsuarioByCurso(usuarioCurso));
     }

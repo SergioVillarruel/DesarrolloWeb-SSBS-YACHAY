@@ -18,14 +18,16 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
    Optional<Usuario> findById(Long usuarioId);
    Optional<Usuario> findByCorreoAndContraseña(String correo, String contraseña);
    //Optional<Usuario> findPasswordbyEmail(Long usuarioId);
-   List<Usuario> findAllByCurso(String var1);
+
    List<Usuario> findByRolIs(String Rol);
    List<Usuario> findByUniversidad(String Universidad);
    Optional<Usuario> findByNombre(String nombre);
+
    @Query(value = "select portafolio from usuarios where nombre = ?1",nativeQuery = true)
    String findPortafolio(String nombre);
-   @Query(value = "select * from usuarios where id =?1",nativeQuery = true)
-   Optional<Usuario> findUsuarioBy(Long usuarioId);
+
+   @Query(value = "select * from usuarios where id in (select usuario_id from curso_usuario where curso_id = ?1)",nativeQuery = true)
+   List<Usuario> findAllByCursoId(Long cursoId);
 
 
 }

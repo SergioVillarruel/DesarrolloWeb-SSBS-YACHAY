@@ -19,7 +19,6 @@ public class usuarioRest {
     @JsonProperty("nombre")
     private String nombre;
 
-
     @JsonProperty("fecha_de_nacimiento")
     private LocalDate fecha_de_nacimiento;
 

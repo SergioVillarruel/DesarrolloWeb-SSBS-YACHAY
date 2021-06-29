@@ -13,7 +13,7 @@ public interface UsuarioService {
     UsuarioDto registerUsuario(CreateUsuarioDto createUsuarioDto);
     UsuarioDto loginUsuario(LoginUsuarioDto loginUsuarioDto);
     //UsuarioDto findContraseñabyEmail(Long usuarioId);
-    UsuarioDto findAllUsuarioByCurso(String Nombre);
+    List<UsuarioDto> findAllUsuarioByCurso(String Nombre);
     UsuarioDto editUsuario(Long usuarioId, EditUsuarioDto new_datos);
     List<usuarioRest> findAllUsuarioByRol(String Rol);
     UsuarioDto editarImagen(Long usuarioId,String imagen);
