@@ -8,17 +8,22 @@
   
 }
 
-
+.btn-s{
+  width: 5rem;
+  padding: 2px 3px;
+  text-align: center;
+}
 
 
 .form {
   display: flex;
   flex-direction: column;
+  margin-left:  5%;
   padding: 2px 16px;
   width: 600px;
   height: 100%;
   gap: 1rem;
-  box-shadow: 1px 1px 1px 1px black;
+  
   
 }
 

@@ -20,6 +20,7 @@ import { PerfilPageComponent } from './perfil-page/perfil-page.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

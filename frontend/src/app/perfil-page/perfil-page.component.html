@@ -1,73 +1,56 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<div class= "perfil">
+
     
     <form class="form">
-        <h1>Perfil de Usuario:</h1>
-        <hr>  
+        <h1><br>Perfil de Usuario: </h1>
+        <hr>
+            <div>
+                <img [src]="imageUrl"  style="width: 100px; ; height: 100px;"><br>
+                <br><input  type="file"  (change)= "onFileSelected($event)" >
+                
+            </div>
+
         <div>  
-            <h2> Nombre y Apellido: </h2>
+            ID: {{this.user.id}}<h2> Nombre y Apellido: </h2>
             <div >
-                {{this.user.nombre}}
-                <span>:  Modificacion => </span>  
                 <input class="text" 
-                placeholder="Ingrese su Nombre"
                 name="nombre"
                 [(ngModel)] = "user.nombre"
                 >
             </div>  
-        </div>
-
-        <div>  
+        
             <h2> Rol: </h2>
-            <div>
-                {{this.user.rol}}
-                <span>:  Modificacion => </span>  
+            <div> 
                 <input class="text"  
-                placeholder="Ingrese su rol"
                 name="rol"
                 [(ngModel)] = "user.rol"
                 >
             </div>
-        </div>
-        
-        <div> 
+         
             <h2> Universidad: </h2>
             <div >
-                {{this.user.universidad}}
-                <span>:  Modificacion => </span>  
                 <input class="text" 
-                placeholder="Ingrese su Universidad"
                 name="universidad"
                 [(ngModel)] = "user.universidad"
                 >
             </div>     
-        </div>
-
-        <div>  
+        
             <h2> Correo: </h2>
             <div >
-                {{this.user.correo}}
-                <span>:  Modificacion => </span>  
                 <input class="text" 
-                placeholder="Ingrese su Correo"
                 name="correo"
                 [(ngModel)] = "user.correo">
             </div>
-        </div>
-        
-        <div>  
+       
             <h2> Contraseña: </h2>
             <div>
-                {{this.user.password}}
-                <span>:  Modificacion => </span>  
                 <input class="text"
-                placeholder="Ingrese su Contraseña"
                 name="password"
                 [(ngModel)] = "user.password">
             </div>
             
         </div>
-    <button >Guardar</button>
-    <button id="back" (click)="goBackUrl('home')"> Atras</button>
-    </form>
-</div>
+    <button (click) = onSave()> Guardar</button>
+    <button id="back" (click)="goBackUrl('/home')"> Atras</button>
+    
+</form>
