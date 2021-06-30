@@ -17,4 +17,7 @@ export class NavbarComponent implements OnInit {
   goToHome(): void {
     this.router.navigate(['home']);
   }
+  goToCreateCouse(): void {
+    this.router.navigate(['new-course']);
+  }
 }

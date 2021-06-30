@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { IUser } from '../interfaces/user.interface';
 import { UserService } from '../services/user.service';
 
-interface Universidad {
+export interface Universidad {
   value: string;
   viewValue: string;
 }

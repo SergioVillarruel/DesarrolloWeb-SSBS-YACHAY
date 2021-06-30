@@ -1,4 +1,8 @@
 <mat-toolbar class="navbar">
   <h1 class="logo" (click)="goToHome()">Yachay</h1>
-  <button class="homi" (click)="goProfUrl('prof')">Perfil Usuario</button>
+  <div class="options">
+    <button (click)="goToCreateCouse()">Nuevo Curso</button>
+
+    <button class="homi" (click)="goProfUrl('prof')">Perfil Usuario</button>
+  </div>
 </mat-toolbar>

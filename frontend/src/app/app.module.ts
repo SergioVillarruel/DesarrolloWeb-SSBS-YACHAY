@@ -19,6 +19,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { PerfilPageComponent } from './perfil-page/perfil-page.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { NewCourseComponent } from './new-course/new-course.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     PerfilPageComponent,
     ReservationComponent,
     NavbarComponent,
+    NewCourseComponent,
   ],
   imports: [
     BrowserModule,

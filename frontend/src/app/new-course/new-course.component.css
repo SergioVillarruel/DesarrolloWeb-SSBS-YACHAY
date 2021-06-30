@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  justify-content: center;
+  height: 80vh;
+  align-items: center;
+  flex-direction: column;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  min-width: 500px;
+  gap: 1rem;
+}
+
+button {
+  margin: auto;
+  padding: 0.75em 1.5em;
+  border: none;
+  font-weight: bold;
+  border-radius: 999px;
+  color: white;
+  background-color: cornflowerblue;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: white;
+  color: cornflowerblue;
+}
+
+h1 {
+  width: fit-content;
+  margin-bottom: 2rem;
+  color: cornflowerblue;
+  font-size: xx-large;
+}

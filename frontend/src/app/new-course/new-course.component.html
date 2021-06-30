@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <h1>Ingrese el curso que desee reforzar!</h1>
+  <form>
+    <mat-form-field class="example-full-width">
+      <mat-label>Curso</mat-label>
+      <input
+        matInput
+        placeholder="Ingrese el curso"
+        name="course"
+        [(ngModel)]="course"
+        required
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Universidad</mat-label>
+      <mat-select [(ngModel)]="uniSelected" name="universidad">
+        <mat-option
+          *ngFor="let universidad of universidades"
+          [value]="universidad.value"
+        >
+          {{ universidad.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Ciclo</mat-label>
+      <input matInput type="number" [(ngModel)]="cicle" name="cicle" required />
+    </mat-form-field>
+
+    <button type="submit" (click)="newCourse($event)">Agregar Curso</button>
+  </form>
+</div>
