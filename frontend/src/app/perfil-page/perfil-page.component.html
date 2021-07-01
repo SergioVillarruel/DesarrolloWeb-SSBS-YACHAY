@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<app-navbar [user]="user"></app-navbar>
 
-    
+
     <form class="form">
         <h1><br>Perfil de Usuario: </h1>
         <hr>
@@ -11,7 +11,7 @@
             </div>
 
         <div>  
-            ID: {{this.user.id}}<h2> Nombre y Apellido: </h2>
+            <h2> Nombre y Apellido: </h2>
             <div >
                 <input class="text" 
                 name="nombre"
@@ -51,6 +51,5 @@
             
         </div>
     <button (click) = onSave()> Guardar</button>
-    <button id="back" (click)="goBackUrl('/home')"> Atras</button>
     
 </form>

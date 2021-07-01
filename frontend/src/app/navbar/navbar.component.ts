@@ -14,8 +14,12 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  goProfUrl(rlink: string = ''): void {
-    this.router.navigate([`${rlink}`]);
+  goToProfile(rlink: string = ''): void {
+    this.router.navigateByUrl('/prof', {
+      state: {
+        user: this.user,
+      },
+    });
   }
   goToHome(): void {
     this.router.navigate(['home']);

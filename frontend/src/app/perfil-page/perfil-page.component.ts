@@ -4,6 +4,7 @@ import { IUser } from '../interfaces/user.interface';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { UploadService } from '../services/upload.service';
+import { UserService } from '../services/user.service';
 
 
 @Component({
@@ -13,25 +14,17 @@ import { UploadService } from '../services/upload.service';
 })
 export class PerfilPageComponent implements OnInit {
 
-  user: IUser = {
-     id : 4,
-     nombre : "Pedro Pepe Sanchez",
-     fecha_de_nacimiento : new Date(),
-     genero : "Hombre",
-     rol : "Estudiante",
-     universidad : "UPC",
-     imagen : "",
-     correo : "pepe@gmail.com",
-     password : "123",
-
-  }
-
+  user: IUser = history.state.user;
   imageUrl : string = "/assets/img/default.png";
   selectedFile : File;
 
 
 
-  constructor(private router:Router, private http:HttpClient, private uploadService:UploadService) { }
+  constructor(private router:Router,
+    private http:HttpClient,
+    private uploadService:UploadService,
+    private userService:UserService
+    ) { }
 
   ngOnInit(): void {
   }
@@ -65,7 +58,10 @@ export class PerfilPageComponent implements OnInit {
     
 
   onSave(){
-    undefined;
+    
+    this.userService.editUser(this.user.id, this.user).subscribe((res) =>{
+      console.log(res);
+    })
   }
 
 

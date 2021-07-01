@@ -24,7 +24,11 @@ export class UserService {
       .pipe(catchError((e) => throwError(e)));
   }
 
-
+  editUser(id:number, user:IUser) : Observable<UserResponse>{
+    return this.http
+      .post<UserResponse>(`${environment.apiUrl}/usuarios/edit/${id}`, user)
+      .pipe(catchError((e) => throwError(e)));  
+  }
 
 
 }
