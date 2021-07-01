@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CourseService, CreateCourse } from '../services/course.service';
+import { IUser } from '../interfaces/user.interface';
+import {
+  CourseService,
+  CreateCourse,
+  CreateCourseUser,
+} from '../services/course.service';
 import { Universidad } from '../signup-page/signup-page.component';
 
 @Component({
@@ -8,6 +13,7 @@ import { Universidad } from '../signup-page/signup-page.component';
   styleUrls: ['./new-course.component.css'],
 })
 export class NewCourseComponent implements OnInit {
+  user: IUser = history.state.user;
   course: string = '';
   cicle: number = 1;
   uniSelected: string = '';

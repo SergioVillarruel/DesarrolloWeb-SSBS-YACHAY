@@ -26,10 +26,18 @@
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Ciclo</mat-label>
-      <input matInput type="number" [(ngModel)]="cicle" name="cicle" required />
-    </mat-form-field>
+    <div class="options">
+      <mat-form-field>
+        <mat-label>Ciclo</mat-label>
+        <input
+          matInput
+          type="number"
+          [(ngModel)]="cicle"
+          name="cicle"
+          required
+        />
+      </mat-form-field>
+    </div>
 
     <button type="submit" (click)="newCourse($event)">Agregar Curso</button>
   </form>

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { IUser } from '../interfaces/user.interface';
 
 @Component({
   selector: 'app-navbar',
@@ -8,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   constructor(private router: Router) {}
+
+  @Input() user: IUser;
 
   ngOnInit(): void {}
 
@@ -18,6 +21,17 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['home']);
   }
   goToCreateCouse(): void {
-    this.router.navigate(['new-course']);
+    this.router.navigateByUrl('/new-course', {
+      state: {
+        user: this.user,
+      },
+    });
+  }
+  gotToAddCourse(): void {
+    this.router.navigateByUrl('/add-course', {
+      state: {
+        user: this.user,
+      },
+    });
   }
 }

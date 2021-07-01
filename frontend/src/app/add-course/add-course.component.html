@@ -1,0 +1,32 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <h1>Ingrese el curso que desee enseñar!</h1>
+  <form>
+    <mat-form-field class="example-full-width">
+      <mat-label>Curso</mat-label>
+      <input
+        matInput
+        placeholder="Ingrese el curso"
+        name="course"
+        [(ngModel)]="course"
+        required
+      />
+    </mat-form-field>
+
+    <div class="options">
+      <mat-form-field>
+        <mat-label>Experiencia</mat-label>
+        <input
+          matInput
+          type="number"
+          [(ngModel)]="exp"
+          name="experience"
+          required
+        />
+      </mat-form-field>
+    </div>
+
+    <button type="submit" (click)="addCourse($event)">Agregar Curso</button>
+  </form>
+</div>
