@@ -11,9 +11,12 @@ import { TutorsResponse } from '../interfaces/user.interface';
 export class TutorService {
   constructor(private http: HttpClient) {}
 
-  getTutorsByCourse(course: string): Observable<TutorsResponse> {
+  getTutorsByCourse(
+    filter: string,
+    option: string
+  ): Observable<TutorsResponse> {
     return this.http
-      .get<TutorsResponse>(`${environment.apiUrl}/usuarios/rol/${course}`)
+      .get<TutorsResponse>(`${environment.apiUrl}/usuarios/${filter}/${option}`)
       .pipe(catchError((e) => throwError(e)));
   }
 }

@@ -3,15 +3,27 @@ import { Router } from '@angular/router';
 import { IUser } from '../interfaces/user.interface';
 import { TutorService } from '../services/tutor.service';
 
+export interface Option {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css'],
 })
 export class HomePageComponent implements OnInit {
-  course: string = '';
+  op: string = '';
   tutors: IUser[] = [];
   user: IUser = history.state;
+  opSelected: string = '';
+
+  options: Option[] = [
+    { value: 'curso', viewValue: 'Curso' },
+    { value: 'rol', viewValue: 'Rol' },
+    { value: 'universidad', viewValue: 'Universidad' },
+  ];
 
   constructor(private tutorService: TutorService, private router: Router) {}
 
@@ -20,7 +32,7 @@ export class HomePageComponent implements OnInit {
   searchTutor(e: any): void {
     e.preventDefault();
     this.tutorService
-      .getTutorsByCourse(this.course)
+      .getTutorsByCourse(this.opSelected, this.op)
       .subscribe((res) => (this.tutors = res.data));
     console.log(this.tutors);
   }

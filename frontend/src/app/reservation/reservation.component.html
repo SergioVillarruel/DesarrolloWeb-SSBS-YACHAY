@@ -1,6 +1,16 @@
 <app-navbar></app-navbar>
 
-<h1>Reserva a tu nuevo <span>Tutor</span>!</h1>
+<h1>
+  Reserva a tu nuevo
+  <span>{{
+    user.rol === "tutor"
+      ? "estudiante"
+      : user.rol === "estudiante"
+      ? "tutor"
+      : ""
+  }}</span
+  >!
+</h1>
 <form>
   <div class="container">
     <div class="user">
